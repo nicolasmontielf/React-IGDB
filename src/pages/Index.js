@@ -14,15 +14,15 @@ const Index = () => {
 
             <Grid container spacing={3}>
                 <Grid item xs={12} md={4}>
-                    <ChipsColumn title="Categoria 1" />
+                    <ChipsColumn title="Genres" type="genres" />
                 </Grid>
 
                 <Grid item xs={12} md={4}>
-                    <ChipsColumn title="Categoria 2" />
+                    <ChipsColumn title="Companies" type="companies" />
                 </Grid>
 
                 <Grid item xs={12} md={4}>
-                    <ChipsColumn title="Categoria 3" />
+                    <ChipsColumn title="Platforms" type="platforms" />
                 </Grid>
             </Grid>
 
