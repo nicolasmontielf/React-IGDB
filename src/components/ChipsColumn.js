@@ -29,7 +29,7 @@ const ChipsColumn = (props) => {
         <>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <h4>{ props.title }</h4>
+                    <h4 style={{ margin: "0px" }}>{ props.title }</h4>
                 </Grid>
                 <Grid item xs={12}>
                     {itemsCategories}
