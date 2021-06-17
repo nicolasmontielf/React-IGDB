@@ -5,6 +5,8 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia } from '@mate
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import placeholder from "../assets/images/placeholder.png"
+
 const imageURL = (name) => {
     if (name) {
         return `https://images.igdb.com/igdb/image/upload/t_cover_big/${name}.jpg`
@@ -17,8 +19,8 @@ const GameCard = (props) => {
             <CardActionArea>
                 <CardMedia
                     style={{ height: "20em" }}
-                    image={ imageURL(props.gameInfo?.cover?.image_id) ?? "http://placekitten.com/800/800" }
-                    title={props.gameInfo?.name ?? ""}
+                    image={ imageURL(props.gameInfo?.cover?.image_id) ?? placeholder }
+                    title={ props.gameInfo?.name ?? "" }
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h6">

@@ -7,8 +7,8 @@ const ChipItem = (props) => {
         hue: "blue"
     })
     return (
-        <Chip 
-            style={{ backgroundColor: random, color: "white" }}
+        <Chip
+            style={{ backgroundColor: random, color: "white", margin: "0.2em" }}
             avatar={<Avatar>{props.data.name[0]}</Avatar>} 
             label={props.data.name}
             onClick={ () => console.log("Esto va a llevar al catálogo") }
