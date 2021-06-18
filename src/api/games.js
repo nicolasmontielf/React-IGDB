@@ -2,7 +2,7 @@ import getData from "./get_data"
 
 export const getLastGames = async () => {
     const actualTime = new Date().getTime()
-    const query = `fields *, cover.*; where status = 0 & created_at < ${actualTime}; sort created_at desc;`
+    const query = `fields id, name, slug, genres.name, cover.*; where status = (0, 4) & created_at < ${actualTime}; sort updated_at desc;`
 
     try {
         const data = await getData("games", query)

@@ -8,8 +8,7 @@ import getData from "./get_data"
 */
 
 export const getCategories = async (type) => {
-    // const actualTime = new Date().getTime()
-    const query = `fields *;`
+    const query = `fields name, slug; sort updated_at;`
 
     try {
         const data = await getData(type, query)
