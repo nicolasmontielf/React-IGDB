@@ -33,14 +33,17 @@ const GameCard = (props) => {
                     title={ props.gameInfo?.name ?? "" }
                 />
                 <CardContent style={{ padding: "0.5em 0.3em" }}>
-                    <Typography variant="h6" noWrap >
+                    <Typography variant="h6" noWrap>
                         {props.gameInfo?.name}
+                    </Typography>
+                    <Typography variant="caption" noWrap>
+                        {props.gameInfo?.genres[0].name}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary" onClick={ () => console.log("Llevará a la página del juego.") }>
-                    Ver más
+                <Button size="small" variant="outlined" color="primary" onClick={ () => console.log("Llevará a la página del juego.") }>
+                    Detalles
                 </Button>
             </CardActions>
         </Card>

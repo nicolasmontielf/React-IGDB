@@ -66,10 +66,10 @@ const Menu = () => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className="bg-black">
                 <Toolbar>
                     <Typography className={classes.title} variant="h6" noWrap>
-                        GAMES
+                        REACT GAMES
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
