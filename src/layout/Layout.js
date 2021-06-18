@@ -6,15 +6,13 @@ import { Container } from '@material-ui/core';
 
 const Layout = () => {
     return (
-        <>
+        <div>
             <Menu />
-            <main>
-                <Container>
-                    <Index />
-                </Container>
-            </main>
+            <Container component="main" >
+                <Index />
+            </Container>
             <Footer />
-        </>
+        </div>
     )
 }
 

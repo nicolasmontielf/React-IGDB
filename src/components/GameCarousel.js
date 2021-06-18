@@ -4,34 +4,34 @@ import GameCard from "./GameCard"
 import { Typography } from '@material-ui/core';
 import 'swiper/swiper-bundle.css';
 import { getLastGames } from "../api/games"
+import Skeleton from '@material-ui/lab/Skeleton'
 
 const GameCarousel = (props) => {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState(null)
 
     // Esto corre al inicio del render
     useEffect( () => {
         const fetchData = async () => {
             const newItems = await getLastGames()
             if (newItems) {
+                const itemForCarousel = newItems.map((aux) => {
+                    return (
+                        <SwiperSlide key={aux.id}>
+                            <GameCard gameInfo={aux} />
+                        </SwiperSlide>
+                    )
+                })
                 setItems(() => {
-                    return newItems
+                    return itemForCarousel
                 })
             }
         }
         fetchData()
     }, [])
-    
-    const itemForCarousel = items.map((aux) => {
-        return (
-            <SwiperSlide key={aux.id}>
-                <GameCard gameInfo={aux} />
-            </SwiperSlide>
-        )
-    })
 
     return (
         <>
-            <Typography variant="h3">
+            <Typography variant="h4" style={{ marginBottom: "0.5em" }}>
                 {props.title}
             </Typography>
 
@@ -39,10 +39,28 @@ const GameCarousel = (props) => {
                 spaceBetween={10}
                 slidesPerView={5}
             >
-                {itemForCarousel}
+                {
+                    (items && Array.isArray(items))
+                    ? items
+                    : skeletonLoading()
+                }
             </Swiper>
             
         </>
+    )
+}
+
+const skeletonLoading = () => {
+    let items = []
+    for (let i = 0; i < 6; i++) {
+        items.push(
+            <SwiperSlide key={i}>
+                <Skeleton variant="rect" width="100%" height="21em" />
+            </SwiperSlide>
+        )
+    }
+    return (
+        items
     )
 }
 

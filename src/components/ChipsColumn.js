@@ -1,41 +1,56 @@
 import { useEffect, useState } from "react"
-import Grid from '@material-ui/core/Grid';
+import { Grid, Typography } from '@material-ui/core';
+import Skeleton from '@material-ui/lab/Skeleton'
 import ChipItem from "./ChipItem"
 import { getCategories } from "../api/categories"
 
-
 const ChipsColumn = (props) => {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState(null)
 
     useEffect( () => {
         const fetchData = async () => {
             const newItems = await getCategories(props.type)
             if (newItems) {
+                const itemsCategories = newItems.map((aux) => {
+                    return (
+                        <ChipItem data={aux} key={aux.id} />
+                    )
+                })
                 setItems(() => {
-                    return newItems
+                    return itemsCategories
                 })
             }
         }
         fetchData()
     }, [props.type])
 
-    const itemsCategories = items.map((aux) => {
-        return (
-            <ChipItem data={aux} key={aux.id} />
-        )
-    })
-
     return (
         <>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <h4 style={{ margin: "0px" }}>{ props.title }</h4>
+                    <Typography variant="h5">
+                        { props.title }
+                    </Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    {itemsCategories}
+                    {
+                        (items && Array.isArray(items))
+                        ? items
+                        : skeletonLoading()
+                    }
                 </Grid>
             </Grid>
         </>
+    )
+}
+
+const skeletonLoading = () => {
+    return (
+        <div>
+            <Skeleton variant="text" height="2em" />
+            <Skeleton variant="text" height="2em" />
+            <Skeleton variant="text" height="2em" />
+        </div>
     )
 }
 
