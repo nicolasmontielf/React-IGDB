@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -61,6 +62,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const menuItems = [
+    { text: "Home", path: "/" },
+    { text: "About", path: "/about" }
+]
+
 const Menu = () => {
     const classes = useStyles();
 
@@ -71,6 +77,18 @@ const Menu = () => {
                     <Typography className={classes.title} variant="h6" noWrap>
                         REACT GAMES
                     </Typography>
+                    <div>
+                        {menuItems.map((val, index) => {
+                            return (
+                                <Link key={index} to={val.path}>
+                                    <Typography className="menu-item" variant="subtitle2">{val.text}</Typography>
+                                </Link>
+                            )
+                        })}
+{/*                         
+                        <Typography className="menu-item" variant="subtitle2">Titulo 2</Typography>
+                        <Typography className="menu-item" variant="subtitle2">Titulo 3</Typography> */}
+                    </div>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
